@@ -18,7 +18,7 @@ const int MARGEN = 2;
 const int ANCHO = 100;
 const int ALTO = 24;
 const int MENSAJE_X = 0;
-const int MENSAJE_Y = ALTO + 2; // Posición fija para los mensajes fuera del área de dibujo
+const int MENSAJE_Y = ALTO + 2; 
 
 void gotoxy(int x, int y) {
     coord.X = x;
@@ -42,14 +42,13 @@ void MostrarCursor() {
 
 void LimpiarAreaMensajes() {
     gotoxy(MENSAJE_X, MENSAJE_Y);
-    for (int i = 0; i < 5; ++i) { // Limpia 5 líneas de mensajes
+    for (int i = 0; i < 5; ++i) { 
         cout << string(ANCHO, ' ');
     }
     gotoxy(MENSAJE_X, MENSAJE_Y);
 }
 
 void DibujaCaracter(int x, int y, char c) {
-    // Ajuste de coordenadas si se sale del margen
     if (x < MARGEN) {
         x = ANCHO - MARGEN + (x - MARGEN);
     } else if (x >= ANCHO - MARGEN) {
@@ -112,42 +111,42 @@ void DibujaCirculo(int x, int y, int radio) {
 
 void DibujaLinea(int x, int y, int longitud, int orientacion) {
     switch (orientacion) {
-        case 1: // Arriba
+        case 1: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x, y - i, 'X');
             }
             break;
-        case 2: // Abajo
+        case 2: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x, y + i, 'X');
             }
             break;
-        case 3: // Derecha
+        case 3: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x + i, y, 'X');
             }
             break;
-        case 4: // Izquierda
+        case 4: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x - i, y, 'X');
             }
             break;
-        case 5: // Diagonal Derecha Arriba
+        case 5: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x + i, y - i, 'X');
             }
             break;
-        case 6: // Diagonal Derecha Abajo
+        case 6: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x + i, y + i, 'X');
             }
             break;
-        case 7: // Diagonal Izquierda Arriba
+        case 7: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x - i, y - i, 'X');
             }
             break;
-        case 8: // Diagonal Izquierda Abajo
+        case 8: 
             for (int i = 0; i < longitud; ++i) {
                 DibujaCaracter(x - i, y + i, 'X');
             }
@@ -157,7 +156,7 @@ void DibujaLinea(int x, int y, int longitud, int orientacion) {
 
 void DibujaRombo(int x, int y, int lado, int orientacion) {
     int altura = lado / 2;
-    if (orientacion == 1) { // Arriba
+    if (orientacion == 1) { 
         for (int i = 0; i <= altura; ++i) {
             DibujaCaracter(x - i, y + i, 'X');
             DibujaCaracter(x + i, y + i, 'X');
@@ -166,7 +165,7 @@ void DibujaRombo(int x, int y, int lado, int orientacion) {
             DibujaCaracter(x - i, y + (lado - i - 1), 'X');
             DibujaCaracter(x + i, y + (lado - i - 1), 'X');
         }
-    } else if (orientacion == 2) { // Abajo
+    } else if (orientacion == 2) { 
         for (int i = altura; i >= 0; --i) {
             DibujaCaracter(x - i, y + (altura - i), 'X');
             DibujaCaracter(x + i, y + (altura - i), 'X');
@@ -180,7 +179,7 @@ void DibujaRombo(int x, int y, int lado, int orientacion) {
 
 void DibujaHexagono(int x, int y, int lado, int orientacion) {
     int altura = lado / 2;
-    if (orientacion == 1) { // Vertical
+    if (orientacion == 1) { 
         for (int i = 0; i < altura; ++i) {
             DibujaCaracter(x - i, y + i, 'X');
             DibujaCaracter(x + i, y + i, 'X');
@@ -193,7 +192,7 @@ void DibujaHexagono(int x, int y, int lado, int orientacion) {
             DibujaCaracter(x - i, y + lado + altura - i, 'X');
             DibujaCaracter(x + i, y + lado + altura - i, 'X');
         }
-    } else if (orientacion == 2) { // Horizontal
+    } else if (orientacion == 2) { 
         for (int i = 0; i < altura; ++i) {
             DibujaCaracter(x + i, y - i, 'X');
             DibujaCaracter(x + i, y + i, 'X');
